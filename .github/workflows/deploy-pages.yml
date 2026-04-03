@@ -33,11 +33,22 @@ jobs:
             echo "BOOKING_FORM_URL is empty. Set it in Settings -> Secrets and variables -> Actions -> Variables."
             exit 1
           fi
+          echo "BOOKING_FORM_URL is set."
           perl -0pe 's/__BOOKING_FORM_URL__/$ENV{BOOKING_FORM_URL}/g' index.html > public/index.html
           if grep -q "__BOOKING_FORM_URL__" public/index.html; then
             echo "Placeholder replacement failed."
             exit 1
           fi
+          if ! grep -q "form.jotform.com" public/index.html; then
+            echo "Expected booking form domain not found in generated HTML."
+            exit 1
+          fi
+
+      - name: Verify generated booking link
+        run: |
+          echo "Checking generated HTML for booking link"
+          grep -n "form.jotform.com" public/index.html
+          grep -n "const bookingUrl =" public/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
