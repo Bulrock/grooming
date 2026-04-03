@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Łapa w Łapę | Grooming z troską</title>
+  <meta
+    name="description"
+    content="Salon groomerski dla psów i kotów. Kąpiele, strzyżenie, trymowanie i pielęgnacja w spokojnej atmosferze."
+  >
+  <style>
+    :root {
+      --bg: #f6efe7;
+      --surface: rgba(255, 248, 240, 0.88);
+      --paper: #fffdf8;
+      --ink: #2f241d;
+      --muted: #6d5a4d;
+      --accent: #c4683c;
+      --accent-dark: #9a4b29;
+      --line: rgba(84, 59, 43, 0.12);
+      --shadow: 0 24px 60px rgba(59, 36, 22, 0.14);
+      --radius-lg: 32px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --content: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255, 209, 176, 0.7), transparent 30%),
+        radial-gradient(circle at right, rgba(209, 227, 202, 0.7), transparent 28%),
+        linear-gradient(180deg, #fbf6ef 0%, #f2e7dc 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(calc(100% - 32px), var(--content));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      padding: 22px 0 10px;
+    }
+
+    .topbar .shell,
+    .hero,
+    .highlights,
+    .about,
+    .cta,
+    .footer {
+      display: grid;
+      gap: 24px;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: rgba(255, 253, 248, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 999px;
+      padding: 14px 18px;
+      box-shadow: 0 12px 28px rgba(76, 49, 31, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: #fff7f0;
+      background: linear-gradient(135deg, var(--accent) 0%, #d68d62 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+
+    .brand-copy small,
+    .eyebrow,
+    .card p,
+    .details p,
+    .about-copy p,
+    .cta-copy p,
+    .footer-copy,
+    .booking-note,
+    .nav a {
+      color: var(--muted);
+    }
+
+    .brand-copy strong,
+    .hero-copy h1,
+    .section-title,
+    .card h3,
+    .details strong,
+    .about-copy h2,
+    .cta-copy h2 {
+      display: block;
+      color: var(--ink);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 14px;
+      font-size: 0.95rem;
+    }
+
+    .hero-wrap {
+      padding: 18px 0 34px;
+    }
+
+    .hero {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: stretch;
+      background: linear-gradient(135deg, rgba(255, 252, 247, 0.95), rgba(246, 232, 220, 0.88));
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 4vw, 42px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -90px -120px auto;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(196, 104, 60, 0.18), transparent 68%);
+      z-index: -1;
+    }
+
+    .hero-copy {
+      display: grid;
+      align-content: center;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 0.92;
+      max-width: 10ch;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 56ch;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #4a392e;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #fff8f3;
+      box-shadow: 0 16px 30px rgba(196, 104, 60, 0.24);
+    }
+
+    .button-primary:hover,
+    .button-primary:focus-visible {
+      background: var(--accent-dark);
+    }
+
+    .button-secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .booking-note {
+      font-size: 0.95rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 420px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255, 246, 237, 0.4), rgba(255, 255, 255, 0.2)),
+        linear-gradient(135deg, #f0d2bb 0%, #dcead1 100%);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .hero-blob,
+    .paw,
+    .details {
+      position: absolute;
+    }
+
+    .hero-blob {
+      inset: 28px;
+      border-radius: 40% 60% 55% 45% / 42% 42% 58% 58%;
+      background:
+        radial-gradient(circle at 30% 30%, #fff6ee 0%, #ffe7d5 30%, transparent 32%),
+        radial-gradient(circle at 72% 30%, #fff6ee 0%, #ffe7d5 30%, transparent 32%),
+        radial-gradient(circle at 50% 62%, #fff8f3 0%, #ffe4d2 36%, transparent 38%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 243, 232, 0.16));
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .paw {
+      font-size: clamp(4rem, 10vw, 6rem);
+      opacity: 0.52;
+      filter: drop-shadow(0 14px 22px rgba(104, 71, 50, 0.12));
+    }
+
+    .paw-a { top: 26px; right: 24px; }
+    .paw-b { bottom: 126px; left: 26px; }
+    .paw-c { bottom: 30px; right: 34px; }
+
+    .details {
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .card,
+    .detail {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: 0 16px 30px rgba(59, 36, 22, 0.08);
+    }
+
+    .detail {
+      padding: 14px;
+    }
+
+    .details strong {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+
+    .details p {
+      margin: 0;
+      line-height: 1.4;
+      font-size: 0.92rem;
+    }
+
+    .section {
+      padding: 24px 0;
+    }
+
+    .section-title {
+      margin: 0 0 6px;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1;
+    }
+
+    .section-intro {
+      margin: 0;
+      max-width: 58ch;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .highlights-grid,
+    .about {
+      display: grid;
+      gap: 18px;
+    }
+
+    .highlights-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 24px;
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    .about {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      margin-top: 24px;
+    }
+
+    .about-visual {
+      min-height: 320px;
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.78), transparent 38%),
+        linear-gradient(135deg, #cfdfc7 0%, #f3d2b7 100%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-visual::before,
+    .about-visual::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 253, 248, 0.7);
+    }
+
+    .about-visual::before {
+      width: 180px;
+      height: 180px;
+      left: 28px;
+      top: 34px;
+    }
+
+    .about-visual::after {
+      width: 120px;
+      height: 120px;
+      right: 34px;
+      bottom: 28px;
+    }
+
+    .about-label {
+      position: absolute;
+      left: 28px;
+      bottom: 28px;
+      right: 28px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255, 253, 248, 0.9);
+      border: 1px solid rgba(84, 59, 43, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .about-label strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+    }
+
+    .about-label span {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .about-copy {
+      display: grid;
+      gap: 14px;
+    }
+
+    .about-copy h2,
+    .cta-copy h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 0.98;
+    }
+
+    .about-copy p,
+    .cta-copy p {
+      margin: 0;
+      line-height: 1.75;
+    }
+
+    .cta {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 30px;
+      margin: 30px 0 46px;
+      background: linear-gradient(135deg, #fff9f3 0%, #f4e1d4 100%);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(84, 59, 43, 0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .footer {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 0 0 34px;
+      align-items: end;
+    }
+
+    .footer-copy {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-weight: 600;
+    }
+
+    .footer-meta {
+      text-align: right;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .about,
+      .cta,
+      .footer,
+      .highlights-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .details {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 360px;
+      }
+
+      .footer-links,
+      .footer-meta {
+        justify-content: flex-start;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .brand-row {
+        border-radius: 24px;
+        padding: 16px;
+      }
+
+      .hero-copy h1,
+      .section-title,
+      .about-copy h2,
+      .cta-copy h2 {
+        max-width: none;
+      }
+
+      .hero-actions,
+      .brand-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell brand-row" data-reveal>
+      <a class="brand" href="#start" aria-label="Łapa w Łapę">
+        <span class="brand-mark" aria-hidden="true">✂</span>
+        <span class="brand-copy">
+          <strong>Łapa w Łapę</strong>
+          <small>Grooming dla psów i kotów</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Nawigacja główna">
+        <a href="#oferta">Oferta</a>
+        <a href="#o-nas">O nas</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="start">
+    <div class="hero-wrap shell">
+      <section class="hero">
+        <div class="hero-copy" data-reveal>
+          <span class="eyebrow">Spokojna pielęgnacja, bez pośpiechu</span>
+          <h1>Piękna sierść. Spokojny pupil. Prosty zapis.</h1>
+          <p>
+            Kameralny salon groomerski, w którym liczy się komfort zwierzaka i czytelny proces
+            umawiania wizyty. Strzyżenie, kąpiel, trymowanie i pielęgnacja dopasowane do potrzeb pupila.
+          </p>
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              id="booking-link"
+              href="#kontakt"
+              target="_blank"
+              rel="noreferrer"
+            >Umów wizytę</a>
+            <a class="button button-secondary" href="#oferta">Zobacz ofertę</a>
+          </div>
+          <div class="booking-note" id="booking-note">
+            Link do rejestracji pojawi się automatycznie po ustawieniu zmiennej w GitHub.
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true" data-reveal>
+          <div class="hero-blob"></div>
+          <div class="paw paw-a">🐾</div>
+          <div class="paw paw-b">🐾</div>
+          <div class="paw paw-c">🐾</div>
+          <div class="details">
+            <div class="detail">
+              <strong>Kąpiel i suszenie</strong>
+              <p>Łagodne kosmetyki i spokojne tempo pracy.</p>
+            </div>
+            <div class="detail">
+              <strong>Strzyżenie i trymowanie</strong>
+              <p>Dopasowane do rasy, sierści i preferencji opiekuna.</p>
+            </div>
+            <div class="detail">
+              <strong>Pierwsza wizyta bez stresu</strong>
+              <p>Prosty formularz zapisu i jasna komunikacja przed spotkaniem.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="section shell highlights" id="oferta">
+      <div data-reveal>
+        <p class="eyebrow">Oferta MVP</p>
+        <h2 class="section-title">Najważniejsze usługi w jednym miejscu</h2>
+        <p class="section-intro">
+          Strona ma szybko wyjaśnić, czym się zajmujesz i skierować użytkownika do formularza zapisu.
+          Bez rozbudowanych podstron, bez zbędnego chaosu.
+        </p>
+      </div>
+      <div class="highlights-grid">
+        <article class="card" data-reveal>
+          <h3>Pielęgnacja podstawowa</h3>
+          <p>Kąpiel, suszenie, wyczesanie i higiena uszu oraz pazurków w komfortowych warunkach.</p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Metamorfoza sierści</h3>
+          <p>Strzyżenie i modelowanie dopasowane do stylu życia zwierzaka oraz oczekiwanego efektu.</p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Jasny zapis online</h3>
+          <p>Jeden przycisk prowadzi prosto do formularza wizyty, który ustawiasz przez GitHub Variable.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="o-nas">
+      <div class="about">
+        <div class="about-visual" data-reveal>
+          <div class="about-label">
+            <strong>Salon gotowy na start</strong>
+            <span>Ten landing page działa jako prosta wizytówka i punkt wejścia do rejestracji.</span>
+          </div>
+        </div>
+        <div class="about-copy" data-reveal>
+          <p class="eyebrow">Dlaczego to działa</p>
+          <h2>Minimalna strona, która od razu zbiera wizyty</h2>
+          <p>
+            MVP skupia się na tym, czego naprawdę potrzebujesz na początku: mocny nagłówek,
+            podstawowa oferta, krótkie zaufanie i przycisk prowadzący do formularza.
+          </p>
+          <p>
+            Link do formularza nie jest zaszyty na stałe w kodzie. Możesz go zmienić z poziomu
+            repozytorium przez `Settings -> Secrets and variables -> Actions -> Variables`.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell" id="kontakt">
+      <div class="cta" data-reveal>
+        <div class="cta-copy">
+          <p class="eyebrow">Rejestracja</p>
+          <h2>Włącz formularz i zacznij przyjmować zapisy</h2>
+          <p>
+            Ustaw zmienną `BOOKING_FORM_URL` w GitHub, a przycisk na stronie automatycznie zacznie
+            kierować do właściwego formularza wizyty.
+          </p>
+        </div>
+        <a
+          class="button button-primary"
+          id="cta-booking-link"
+          href="#start"
+          target="_blank"
+          rel="noreferrer"
+        >Przejdź do formularza</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <div class="footer-copy">
+      Łapa w Łapę
+      <br>
+      Grooming z troską o komfort pupila i prostym zapisem online.
+    </div>
+    <div class="footer-links">
+      <a href="#start">Start</a>
+      <a href="#oferta">Oferta</a>
+      <a href="#o-nas">O nas</a>
+    </div>
+    <div class="footer-meta">
+      <span id="footer-status">Brak aktywnego linku rejestracji</span>
+    </div>
+  </footer>
+
+  <script>
+    const bookingUrl = "__BOOKING_FORM_URL__";
+    const bookingAnchors = [
+      document.getElementById("booking-link"),
+      document.getElementById("cta-booking-link")
+    ];
+    const bookingNote = document.getElementById("booking-note");
+    const footerStatus = document.getElementById("footer-status");
+
+    const hasBookingUrl =
+      bookingUrl &&
+      bookingUrl !== "__BOOKING_FORM_URL__" &&
+      /^https?:\/\//.test(bookingUrl);
+
+    if (hasBookingUrl) {
+      bookingAnchors.forEach((link) => {
+        link.href = bookingUrl;
+      });
+      bookingNote.textContent = "Rejestracja online jest aktywna. Kliknij i wybierz dogodny termin.";
+      footerStatus.textContent = "Link rejestracji jest aktywny";
+    } else {
+      bookingAnchors.forEach((link) => {
+        link.removeAttribute("target");
+        link.removeAttribute("rel");
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    document.querySelectorAll("[data-reveal]").forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
