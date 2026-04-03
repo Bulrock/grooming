@@ -26,12 +26,18 @@ jobs:
 
       - name: Prepare site with booking URL
         env:
-          BOOKING_FORM_URL: ${{ vars.BOOKING_FORM_URL }}
+          BOOKING_FORM_URL: ${{ vars['BOOKING_FORM_URL'] || '' }}
         run: |
-          cp index.html dist.html
-          sed "s|__BOOKING_FORM_URL__|${BOOKING_FORM_URL}|g" dist.html > index-built.html
           mkdir public
-          mv index-built.html public/index.html
+          if [ -z "${BOOKING_FORM_URL}" ]; then
+            echo "BOOKING_FORM_URL is empty. Set it in Settings -> Secrets and variables -> Actions -> Variables."
+            exit 1
+          fi
+          perl -0pe 's/__BOOKING_FORM_URL__/$ENV{BOOKING_FORM_URL}/g' index.html > public/index.html
+          if grep -q "__BOOKING_FORM_URL__" public/index.html; then
+            echo "Placeholder replacement failed."
+            exit 1
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

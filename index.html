@@ -623,20 +623,20 @@
       <div class="about">
         <div class="about-visual" data-reveal>
           <div class="about-label">
-            <strong>Salon gotowy na start</strong>
-            <span>Ten landing page działa jako prosta wizytówka i punkt wejścia do rejestracji.</span>
+            <strong>Spokojna atmosfera</strong>
+            <span>Delikatna pielęgnacja, cierpliwe podejście i komfort pupila na każdym etapie wizyty.</span>
           </div>
         </div>
         <div class="about-copy" data-reveal>
-          <p class="eyebrow">Dlaczego to działa</p>
-          <h2>Minimalna strona, która od razu zbiera wizyty</h2>
+          <p class="eyebrow">O nas</p>
+          <h2>Pielęgnacja z troską o wygląd i dobre samopoczucie</h2>
           <p>
-            MVP skupia się na tym, czego naprawdę potrzebujesz na początku: mocny nagłówek,
-            podstawowa oferta, krótkie zaufanie i przycisk prowadzący do formularza.
+            Dbamy o estetyczny wygląd sierści, wygodę pupila i spokojny przebieg każdej wizyty.
+            Pracujemy uważnie, z wyczuciem i szacunkiem do potrzeb zwierzęcia.
           </p>
           <p>
-            Link do formularza nie jest zaszyty na stałe w kodzie. Możesz go zmienić z poziomu
-            repozytorium przez `Settings -> Secrets and variables -> Actions -> Variables`.
+            Zapraszamy na kąpiel, strzyżenie, trymowanie i podstawowe zabiegi pielęgnacyjne
+            dopasowane do rodzaju sierści oraz charakteru pupila.
           </p>
         </div>
       </div>
@@ -646,10 +646,9 @@
       <div class="cta" data-reveal>
         <div class="cta-copy">
           <p class="eyebrow">Rejestracja</p>
-          <h2>Włącz formularz i zacznij przyjmować zapisy</h2>
+          <h2>Zarejestruj pupila na wizytę</h2>
           <p>
-            Ustaw zmienną `BOOKING_FORM_URL` w GitHub, a przycisk na stronie automatycznie zacznie
-            kierować do właściwego formularza wizyty.
+            Kliknij przycisk i przejdź bezpośrednio do formularza rejestracji wizyty.
           </p>
         </div>
         <a
@@ -674,9 +673,7 @@
       <a href="#oferta">Oferta</a>
       <a href="#o-nas">O nas</a>
     </div>
-    <div class="footer-meta">
-      <span id="footer-status">Brak aktywnego linku rejestracji</span>
-    </div>
+    <div class="footer-meta">Rejestracja online</div>
   </footer>
 
   <script>
@@ -686,7 +683,6 @@
       document.getElementById("cta-booking-link")
     ];
     const bookingNote = document.getElementById("booking-note");
-    const footerStatus = document.getElementById("footer-status");
 
     const hasBookingUrl =
       bookingUrl &&
@@ -698,7 +694,6 @@
         link.href = bookingUrl;
       });
       bookingNote.textContent = "Rejestracja online jest aktywna. Kliknij i wybierz dogodny termin.";
-      footerStatus.textContent = "Link rejestracji jest aktywny";
     } else {
       bookingAnchors.forEach((link) => {
         link.removeAttribute("target");
