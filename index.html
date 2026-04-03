@@ -1095,14 +1095,6 @@
       localStorage.setItem("preferred-language", lang);
     }
 
-    if (!hasBookingUrl) {
-      bookingAnchors.forEach((link) => {
-        link.href = "#kontakt";
-        link.removeAttribute("target");
-        link.removeAttribute("rel");
-      });
-    }
-
     function closeLanguageMenu() {
       langSwitcher.classList.remove("is-open");
       langTrigger.setAttribute("aria-expanded", "false");
