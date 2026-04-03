@@ -740,7 +740,7 @@
             <a
               class="button button-primary"
               id="booking-link"
-              href="#kontakt"
+              href="__BOOKING_FORM_URL__"
               target="_blank"
               rel="noreferrer"
               data-i18n="bookNow"
@@ -834,7 +834,7 @@
         <a
           class="button button-primary"
           id="cta-booking-link"
-          href="#start"
+          href="__BOOKING_FORM_URL__"
           target="_blank"
           rel="noreferrer"
           data-i18n="ctaButton"
@@ -1095,12 +1095,9 @@
       localStorage.setItem("preferred-language", lang);
     }
 
-    if (hasBookingUrl) {
+    if (!hasBookingUrl) {
       bookingAnchors.forEach((link) => {
-        link.href = bookingUrl;
-      });
-    } else {
-      bookingAnchors.forEach((link) => {
+        link.href = "#kontakt";
         link.removeAttribute("target");
         link.removeAttribute("rel");
       });
